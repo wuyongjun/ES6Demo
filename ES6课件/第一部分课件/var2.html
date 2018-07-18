@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>51牧码人——http://www.51mmr.net 专注[前端+Java],人才培养</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    </style>
+    <script>
+        // let [a, b, c] = [2, 4, 5];
+        // let [a, [b, c]] = [2, [5, 6]];
+        // console.log(a, b, c);
+        // let json = {
+        //     name: 'wuyongjun',
+        //     age: 28,
+        //     job: 'coder'
+        // };
+
+        // let { name, age, job:j } = json;
+        // console.log(name, age, j);
+
+        // let [a, b, c='暂无数据'] = [1, 2];
+        // console.log(a, b, c);
+
+        let a = 5;
+        let b = 12;
+        [a, b] = [b, a];
+        console.log(a, b);
+
+        function getPos () {
+            return {
+                left: 10,
+                top: 20
+            }
+        };
+
+        let { left, top:t } = getPos();
+        console.log(left, t);
+
+        let username = 'wuyongjun';
+        let age = 28;
+
+        let str = `我的名字叫${username}, 年龄为${age}`;
+        console.log(str);
+
+        let str1 = 'apple banana pear';
+        console.log(str1.includes('apple'));
+
+        let arr = ['apple', 'banana', 'pear'];
+        console.log(...arr);
+
+        function show (x, y, ...a) {
+            console.log(a);
+        }
+        show(1,2,3,4,5);
+
+        var arr1 = [1,2,3,4,5];
+        // var arr2 = [...arr1];
+        var arr2 = Array.from(arr1);
+        console.log(arr1, arr2);
+
+        let show1 = (a, b) => a + b;
+        console.log(show1(a, b));
+
+        let show2 = (...args) => {
+            console.log(args);
+        };
+        show2(1,2,3,4,5);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

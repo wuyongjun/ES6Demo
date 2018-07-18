@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>51牧码人——http://www.51mmr.net 专注[前端+Java],人才培养</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    </style>
+    <script>
+        let json = {a:1};
+        let json2 = {b:2, a:2};
+        let json3 = {c:3};
+
+        let obj = Object.assign({}, json, json2,json3);
+
+        console.log(obj);
+
+        let fruits = ['apple', 'banana', 'pear'];
+
+        fruits.forEach((val, index, arr) => {
+            // console.log(this, val, index, arr);
+        });
+
+        let data = [
+            { title: 'aaaaaa', read: 100, hot: true },
+            { title: 'bbbbbb', read: 100, hot: false },
+            { title: 'cccc', read: 100, hot: true },
+            { title: 'dddddd', read: 100, hot: true }
+        ];
+
+        let result1 = data.map((item, index, arr) => {
+            let json = {};
+            json.t = `这是标题${item.title}。`;
+            json.r = item.read + 100;
+            json.h = item.hot;
+            return json;
+        });
+        console.log(result1);
+        let result2 = data.filter((item, index, arr) => {
+            return item.hot;
+        });
+        console.log(result2);
+
+        let nums = [1, 3, 5, 7, 10];
+
+        let result3 = nums.every((value, index, arr) => {
+            return value % 2 === 1;
+        });
+        console.log(result3);
+
+        let result4 = nums.reduce((prev, curr, index, arr) => {
+            return prev + curr
+        });
+        console.log('result4---', result4);
+
+        let num = [2, 3, 4];
+        let result5 = num.reduce((prev, curr, index, arr) => {
+            console.log(prev, curr);
+            return Math.pow(prev, curr);
+        });
+        console.log('result5---', result5);
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            let oLi = document.querySelectorAll('ul li');
+            let oLiArr = Array.from(oLi);
+            oLiArr.pop();
+            // console.log(oLiArr);
+        };
+    </script>
+    <script type="text/javascript">
+        let json1 = {
+            0: 'apple',
+            1: 'orange',
+            2: 'banana',
+            length: 3
+        };
+        console.log('json1', Array.from(json1));
+        // console.log('json1', [...json1]);
+
+        let name = 'wuyongjun';
+        let age = 28;
+
+        let json4 = {
+            name,
+            age,
+            showA () {
+                console.log(this.name, this.age);
+            }
+        };
+        json4.showA();
+        console.log(Object.assign({}, json1, { name: 'wuyongjun', age: 28 }));
+
+        let {keys, values, entries} = Object;
+
+        for (let key of keys(json1)) {
+            console.log(key);
+        }
+
+        for (let value of values(json1)) {
+            console.log(value);
+        }
+
+        for (let entry of entries(json1)) {
+            console.log(entry);
+        }
+
+        for (let [key, value] of entries(json1)) {
+            console.log(key, value);
+        }
+
+        let {x, y, ...z} = {x: 1, y: 5, a: 2, b: 9};
+        console.log(x, y, z);
+    </script>
+    <script type="text/javascript">
+        // let p1 = Promise.resolve('wuyongjun');
+
+        // p1.then(res => {
+        //     console.log(res);
+        // });
+        let p1 = new Promise(resolve => {
+            resolve('window');
+        });
+        p1.then(res => {
+            console.log(res);
+        });
+
+        let p2 = Promise.resolve('1111');
+        let p3 = Promise.resolve('2222');
+        let p4 = Promise.resolve('3333');
+
+        Promise.all([p2, p3, p4])
+            .then(response => {
+                let [result1, result2, result3] = response;
+                console.log('result1:',result1,'result2:',result2,'result3:',result3);
+            });
+    </script>
+    <script type="text/javascript">
+        let status = 1;
+        let token = '';
+
+        let login = (resolve, reject) => {
+            setTimeout(() => {
+                if (status === 1) {
+                    resolve({ data: '用户登录成功', status: 200, token: '111111'});
+                } else {
+                    reject({ data: '用户登录失败' });
+                }
+            }, 1000);
+        };
+
+        let getUserInfo = (resolve, reject) => {
+            console.log(token);
+            setTimeout(() => {
+                if (status === 1) {
+                    resolve({ data: '成功获取用户信息', status: 200, token: '111111' });
+                }
+            }, 1000);
+        };
+
+        new Promise(login).then(response => {
+            console.log(response);
+            token = response.token;
+            return new Promise(getUserInfo);
+        }).then(response => {
+            console.log(response);
+        });
+
+    </script>
+</head>
+<body>
+    <ul>
+       <li>1</li>
+       <li>1</li>
+       <li>1</li>
+       <li>1</li>
+       <li>1</li>
+    </ul>
+</body>
+</html>
