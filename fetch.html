@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>fetch用法</title>
+</head>
+<body>
+	<div>
+		<button id="text">get text data</button>
+		<button id="json">get json data</button>
+		<button onclick="" id="net">get net data</button>
+	</div>
+	<script type="text/javascript">
+		
+
+		// let getText = () => {
+			//response.text()处理body数据
+		// 	fetch('data/data.txt').then(response => console.log(response));
+		// }
+
+		// let getJson = () => {
+			
+		// }
+
+		let getNetData = () => {
+			fetch('http://jsonplaceholder.typicode.com/posts').then(response => console.log(response))
+		}
+
+		// document.getElementById('text').addEventListener('click', getText);
+		// document.getElementById('json').addEventListener('click', getJson);
+		document.getElementById('net').addEventListener('click', getNetData);
+	</script>
+</body>
+</html>

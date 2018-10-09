@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Promise</title>
+</head>
+<body>
+	<script type="text/javascript">
+		let p1 = new Promise((resolve, reject) => {
+			resolve('done1')
+		});
+		let p2 = new Promise((resolve, reject) => {
+			resolve('done2');
+		});
+		Promise.all([p1, p2]).then(data => {
+			console.log('data', data);
+			throw 'some err...'
+		}, err => {
+			console.log('err', err);
+		}).catch(e => {
+			console.log(e);
+		})
+		let p3 = new Promise((resolve, reject) => {
+			setTimeout(function () {
+				resolve('done3');
+			}, 1000);
+		});
+		let p4 = new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve('done4')
+			}, 500);
+		});
+
+		Promise.race([p3, p4]).then(data => {
+			console.log(data)
+		}, err => {
+
+		})
+
+		class Person {
+			constructor (name, age) {
+				this.name = name;
+				this.age = age;
+			}
+			showName () {
+				return this.name;
+			}
+			showAge () {
+				return this.age;
+			}
+		}
+		let p = new Person('', 29);
+		console.log(p.showName());
+	</script>
+</body>
+</html>
